@@ -49,6 +49,7 @@ resource "azurerm_virtual_machine" "appvm" {
 }
 
 # DB VMs Template
+/*
 resource "azurerm_network_interface" "PrivateNIC" {
   for_each            = toset(var.db_vm)
   name                = each.value
@@ -97,3 +98,4 @@ resource "azurerm_virtual_machine" "dbvm" {
     disable_password_authentication = false
   }
 }
+*/
