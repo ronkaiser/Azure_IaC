@@ -52,6 +52,8 @@ resource "azurerm_lb_rule" "publicsshrule" {
   protocol                       = "Tcp"
   resource_group_name            = var.rg
   probe_id                       = azurerm_lb_probe.publicsshprobe.id
+  backend_address_pool_id        = azurerm_lb_backend_address_pool.publiclbpool.id
+
 }
 
 resource "azurerm_lb_rule" "publichttprule" {
@@ -63,4 +65,5 @@ resource "azurerm_lb_rule" "publichttprule" {
   protocol                       = "Tcp"
   resource_group_name            = var.rg
   probe_id                       = azurerm_lb_probe.publichttpprobe.id
+  backend_address_pool_id        = azurerm_lb_backend_address_pool.publiclbpool.id
 }
