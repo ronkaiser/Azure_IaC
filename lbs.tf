@@ -20,11 +20,11 @@ resource "azurerm_lb_backend_address_pool" "publiclbpool" {
 
 # Public Load Balancer Pool associations
 resource "azurerm_network_interface_backend_address_pool_association" "webpool" {
+  for_each =  toset(var.app_vm)
   depends_on = [azurerm_network_interface.PublicNIC]
-  for_each                = toset(var.app_vm)
   network_interface_id    = azurerm_network_interface.PublicNIC[each.key].id
   backend_address_pool_id = azurerm_lb_backend_address_pool.publiclbpool.id
-  ip_configuration_name   = each.value
+  ip_configuration_name   = "ipconfig"
 }
 
 # Public Load Balancer SSH probe
